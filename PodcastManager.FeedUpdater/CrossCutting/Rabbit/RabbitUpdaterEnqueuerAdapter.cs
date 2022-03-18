@@ -25,9 +25,12 @@ public class RabbitUpdaterEnqueuerAdapter : IUpdaterEnqueuerAdapter, IDisposable
 
     public bool CanEnqueue()
     {
-        var (channel, _) = CreateChannel(RabbitConfiguration.UpdatePodcastsQueue);
+        var (channel, _) = CreateChannel(RabbitConfiguration.UpdatePodcastQueue);
         using (channel)
-            return channel.MessageCount(RabbitConfiguration.UpdatePodcastsQueue) < 1000;
+        {
+            var count = channel.MessageCount(RabbitConfiguration.UpdatePodcastQueue);
+            return count < 1000;
+        }
     }
 
     public void SetConnection(IConnection connection) =>

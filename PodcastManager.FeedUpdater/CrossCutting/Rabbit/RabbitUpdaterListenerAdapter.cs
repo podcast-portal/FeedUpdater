@@ -44,7 +44,7 @@ public class RabbitUpdaterListenerAdapter : IListenerAdapter, IDisposable
         GC.SuppressFinalize(this);
     }
 
-    private void ListenTo<T>(string queue, Func<T, Task> action, ushort prefetch = 10, bool isGlobal = true)
+    private void ListenTo<T>(string queue, Func<T, Task> action, ushort prefetch = 20, bool isGlobal = true)
     {
         logger.Information("listening to: {Queue}", queue);
         ConfigureChannel();
@@ -85,7 +85,7 @@ public class RabbitUpdaterListenerAdapter : IListenerAdapter, IDisposable
             return consumer;
         }
     }
-    private void ListenTo(string queue, Func<Task> action, ushort prefetch = 10, bool isGlobal = true)
+    private void ListenTo(string queue, Func<Task> action, ushort prefetch = 20, bool isGlobal = true)
     {
         logger.Information("listening to: {Queue}", queue);
         ConfigureChannel();
