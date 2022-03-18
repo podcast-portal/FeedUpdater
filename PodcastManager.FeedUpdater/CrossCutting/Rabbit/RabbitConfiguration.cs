@@ -2,7 +2,7 @@ namespace PodcastManager.FeedUpdater.CrossCutting.Rabbit;
 
 public static class RabbitConfiguration
 {
-    public static readonly string Host =
+    public static readonly string Url =
         Environment.GetEnvironmentVariable("RabbitUrl")
         ?? "localhost";
     public static string UpdatePodcastQueue { get; } =

@@ -19,7 +19,16 @@ MongoConfiguration.SetConventions();
 var repositoryFactory = new RepositoryFactory();
 repositoryFactory.SetLogger(Log.Logger);
 
-var connectionFactory = new ConnectionFactory { Uri = new Uri(RabbitConfiguration.Host) };
+ConnectionFactory connectionFactory;
+try
+{
+    connectionFactory = new ConnectionFactory { Uri = new Uri(RabbitConfiguration.Url) };
+}
+catch (Exception e)
+{
+    Log.Logger.Error(e, "Error on connect to '{Url}'", RabbitConfiguration.Url);
+    throw;
+}
 
 var interactorFactory = new InteractorFactory();
 interactorFactory.SetConnectionFactory(connectionFactory);
