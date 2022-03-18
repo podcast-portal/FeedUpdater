@@ -43,16 +43,24 @@ jobs:
         push: true
         tags: menoncello/podcast-manager.feed-updater
 
-    - name: deploy
-      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-      with:
-        host: ${{ secrets.DEPLOY_SERVER }}
-        user: ${{ secrets.DEPLOY_USER }}
-        key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-        first_ssh: |
-          mkdir -p /home/deployer/PodcastManager.FeedUpdater
-        scp: |
-          './docker-compose.yml' => /home/deployer/PodcastManager.FeedUpdater/
-        last_ssh: |
-          env DOCKER_URL="${{ secrets.MONGO_URL }}" RABBIT_URL="${{ secrets.RABBIT_URL }}" docker stack deploy --compose-file /home/deployer/PodcastManager.FeedUpdater/docker-compose.yml feed-updater
-          rm -rf /home/deployer/PodcastManager.FeedUpdater
+  - name: Deploy to swarm
+    uses: sagebind/docker-swarm-deploy-action@v2
+    with:
+      remote_host: ssh://${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_SERVER }}
+      ssh_private_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+#      ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
+      args: stack deploy --compose-file docker-compose.yml feed-updater
+      
+#    - name: deploy
+#      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+#      with:
+#        host: ${{ secrets.DEPLOY_SERVER }}
+#        user: ${{ secrets.DEPLOY_USER }}
+#        key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+#        first_ssh: |
+#          mkdir -p /home/deployer/PodcastManager.FeedUpdater
+#        scp: |
+#          './docker-compose.yml' => /home/deployer/PodcastManager.FeedUpdater/
+#        last_ssh: |
+#          env DOCKER_URL="${{ secrets.MONGO_URL }}" RABBIT_URL="${{ secrets.RABBIT_URL }}" docker stack deploy --compose-file /home/deployer/PodcastManager.FeedUpdater/docker-compose.yml feed-updater
+#          rm -rf /home/deployer/PodcastManager.FeedUpdater
