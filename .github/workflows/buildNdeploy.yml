@@ -17,14 +17,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore
+
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
@@ -43,13 +47,13 @@ jobs:
         push: true
         tags: menoncello/podcast-manager.feed-updater
 
-  - name: Deploy to swarm
-    uses: sagebind/docker-swarm-deploy-action@v2
-    with:
-      remote_host: ssh://${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_SERVER }}
-      ssh_private_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-#      ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
-      args: stack deploy --compose-file docker-compose.yml feed-updater
+    - name: Deploy to swarm
+      uses: sagebind/docker-swarm-deploy-action@v2
+      with:
+        remote_host: ssh://${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_SERVER }}
+        ssh_private_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+  #      ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
+        args: stack deploy --compose-file docker-compose.yml feed-updater
       
 #    - name: deploy
 #      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
