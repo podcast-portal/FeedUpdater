@@ -5,7 +5,7 @@ services:
     image: "menoncello/podcast-manager.feed-updater"
     environment:
       MONGO_URL: ${MONGO_URL}
-      RABBIT_URL: ${RABBIT_URL}
+      RABBIT_URL: ${RABBIT_URI}
     networks:
       - backend
     deploy:
