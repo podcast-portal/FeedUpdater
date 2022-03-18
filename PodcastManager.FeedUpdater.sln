@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastManager.FeedUpdater", "PodcastManager.FeedUpdater\PodcastManager.FeedUpdater.csproj", "{EBE081E7-A8F3-4F07-B38A-7110E92B7286}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastManager.FeedUpdater.Tests", "PodcastManager.FeedUpdater.Tests\PodcastManager.FeedUpdater.Tests.csproj", "{80D04CDA-EAD9-41CC-ABD9-7E3EFB86F837}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBE081E7-A8F3-4F07-B38A-7110E92B7286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBE081E7-A8F3-4F07-B38A-7110E92B7286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBE081E7-A8F3-4F07-B38A-7110E92B7286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBE081E7-A8F3-4F07-B38A-7110E92B7286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D04CDA-EAD9-41CC-ABD9-7E3EFB86F837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80D04CDA-EAD9-41CC-ABD9-7E3EFB86F837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80D04CDA-EAD9-41CC-ABD9-7E3EFB86F837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80D04CDA-EAD9-41CC-ABD9-7E3EFB86F837}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
