@@ -68,4 +68,4 @@ jobs:
           export MONGO_URL="${{ secrets.MONGO_URL }}"
           export RABBIT_URL="${{ secrets.RABBIT_URL }}"
           docker stack deploy --compose-file /home/deployer/PodcastManager.FeedUpdater/docker-compose.yml feed-updater
-#          rm -rf /home/deployer/PodcastManager.FeedUpdater
+          rm -rf /home/deployer/PodcastManager.FeedUpdater
