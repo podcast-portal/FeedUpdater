@@ -18,6 +18,7 @@ public class MultiplePodcastUpdaterService : IMultiplePodcastUpdaterInteractor
 
     public async Task Execute()
     {
+        if (!enqueuer.CanEnqueue()) return;
         var podcasts = await repository.ListPodcastToUpdate();
         EnqueuePodcasts(podcasts);
         logger.Information("Total podcasts enqueued {Total}", podcasts.Count);

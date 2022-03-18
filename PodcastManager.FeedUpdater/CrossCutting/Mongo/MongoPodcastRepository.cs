@@ -78,7 +78,7 @@ public class MongoPodcastRepository : MongoRepository, IPodcastRepository
         var result = new List<UpdatePodcast>();
         var page = 1;
 
-        while (await cursor.MoveNextAsync())
+        while (result.Count < 100000 && await cursor.MoveNextAsync())
         {
             result.AddRange(cursor.Current);
             logger.Debug("Required page {Page}", page);

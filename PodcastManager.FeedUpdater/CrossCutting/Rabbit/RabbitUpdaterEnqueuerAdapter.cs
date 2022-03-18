@@ -22,7 +22,14 @@ public class RabbitUpdaterEnqueuerAdapter : IUpdaterEnqueuerAdapter, IDisposable
 
     public void EnqueueUpdatePublishedPodcasts(IReadOnlyCollection<UpdatePublishedPodcast> podcasts) =>
         BatchPublish(RabbitConfiguration.UpdatePublishedPodcastQueue, podcasts);
-    
+
+    public bool CanEnqueue()
+    {
+        var (channel, _) = CreateChannel(RabbitConfiguration.UpdatePodcastsQueue);
+        using (channel)
+            return channel.MessageCount(RabbitConfiguration.UpdatePodcastsQueue) < 1000;
+    }
+
     public void SetConnection(IConnection connection) =>
         this.connection = connection;
 
