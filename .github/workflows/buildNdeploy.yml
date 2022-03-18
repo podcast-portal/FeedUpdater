@@ -52,7 +52,7 @@ jobs:
       with:
         remote_host: ssh://${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_SERVER }}
         ssh_private_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-  #      ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
+        ssh_public_key: ${{ secrets.DEPLOY_PUBLIC_KEY }}
         args: stack deploy --compose-file docker-compose.yml feed-updater
       
 #    - name: deploy
