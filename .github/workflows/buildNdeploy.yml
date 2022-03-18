@@ -52,6 +52,6 @@ jobs:
           './*' => /home/deployer/PodcastManager.FeedUpdater/
         last_ssh: |
           export MONGO_URL=${{ secrets.MONGO_URL }}
-          export RABBIT_URL=${{ secrets.RABBIT_URL }}
+          export RABBIT_URL=${{ secrets.RABBIT_URI }}
           docker stack deploy --compose-file /home/deployer/PodcastManager.FeedUpdater/docker-compose.yml feed-updater
           rm -rf /home/deployer/PodcastManager.FeedUpdater
