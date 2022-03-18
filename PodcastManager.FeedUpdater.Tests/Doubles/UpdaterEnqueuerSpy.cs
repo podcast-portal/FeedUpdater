@@ -29,4 +29,6 @@ public class UpdaterEnqueuerSpy : IUpdaterEnqueuerAdapter
 
     public void EnqueueUpdatePublishedPodcasts(IReadOnlyCollection<UpdatePublishedPodcast> podcasts) =>
         EnqueueUpdatePublishedPodcastsSpy.Call(podcasts);
+
+    public bool CanEnqueue() => true;
 }
