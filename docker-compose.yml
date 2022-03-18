@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  updater:
+    image: "menoncello/podcast-manager.feed-updater"
+    environment:
+      MONGO_URL: ${MONGO_URL}
+      RABBIT_URL: ${RABBIT_URL}
+    networks:
+      - backend
+    deploy:
+      mode: replicated
+      replicas: 10
+
+networks:
+  backend:
+    external: true

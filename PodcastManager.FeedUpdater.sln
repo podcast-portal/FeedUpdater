@@ -4,6 +4,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastManager.FeedUpdater"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastManager.FeedUpdater.Tests", "PodcastManager.FeedUpdater.Tests\PodcastManager.FeedUpdater.Tests.csproj", "{80D04CDA-EAD9-41CC-ABD9-7E3EFB86F837}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{DC933DEE-BC95-4476-8B9B-CE0FF907AADF}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\buildNdeploy.yml = .github\workflows\buildNdeploy.yml
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
