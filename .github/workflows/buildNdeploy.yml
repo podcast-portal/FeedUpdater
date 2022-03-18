@@ -35,7 +35,7 @@ jobs:
       uses: docker/build-push-action@v2.6.1
       with:
         context: .
-        file: ./Dockerfile
+        file: ./PodcastManager.FeedUpdater/Dockerfile
         no-cache: true
         push: true
         tags: menoncello/podcast-manager.feed-updater
