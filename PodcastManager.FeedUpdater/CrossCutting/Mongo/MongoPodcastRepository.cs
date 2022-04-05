@@ -34,6 +34,7 @@ public class MongoPodcastRepository : MongoRepository, IPodcastRepository
         var filter = Builders<FullPodcast>.Filter.Eq(x => x.Code, code);
         var update = Builders<FullPodcast>.Update
                 .Set(x => x.Imported.Feed!.Title, feed.Title)
+                .Set(x => x.Language, feed.Language)
                 .SetOrUnset(x => x.Imported.Feed!.Description!, feed.Description)
                 .SetOrUnset(x => x.Imported.Feed!.Language!, feed.Language)
                 .SetOrUnset(x => x.Imported.Feed!.Link!, feed.Link)
