@@ -7,4 +7,5 @@ public record FullPodcast(
         string Title,
         string Feed,
         string Language,
+        string Description,
         bool IsPublished = false);

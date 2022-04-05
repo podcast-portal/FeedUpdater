@@ -35,6 +35,7 @@ public class MongoPodcastRepository : MongoRepository, IPodcastRepository
         var update = Builders<FullPodcast>.Update
                 .Set(x => x.Imported.Feed!.Title, feed.Title)
                 .Set(x => x.Language, feed.Language)
+                .Set(x => x.Description, feed.Description)
                 .SetOrUnset(x => x.Imported.Feed!.Description!, feed.Description)
                 .SetOrUnset(x => x.Imported.Feed!.Language!, feed.Language)
                 .SetOrUnset(x => x.Imported.Feed!.Link!, feed.Link)
